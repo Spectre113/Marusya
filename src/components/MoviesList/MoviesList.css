@@ -1,0 +1,15 @@
+.movies-list {
+  width: 98.5%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.movies {
+  width: 1300px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.movies-list__more {
+  justify-content: center;
+}

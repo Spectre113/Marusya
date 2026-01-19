@@ -1,0 +1,74 @@
+.account {
+  padding: 35px 0;
+}
+
+.account__title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 74px;
+  color: var(--primary);
+}
+
+.account__buttons {
+  display: flex;
+  gap: 69px;
+  margin-bottom: 71px;
+}
+
+.account__content {
+  min-height: 400px;
+}
+
+.account__empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--disabled);
+  font-size: 18px;
+}
+
+.account__error {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--error);
+  font-size: 18px;
+}
+
+.account-button--selected {
+  position: relative;
+}
+
+.account-button--selected::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 101%;
+  height: 1px;
+  background: var(--pink);
+  bottom: -10px;
+}
+
+.account__settings {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--primary);
+  font-size: 18px;
+}
+
+.account__list {
+  flex-direction: column;
+}
+
+.account__item {
+  align-items: center;
+}
+
+.account__item-user {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-opacity);
+  border-radius: 30px;
+}
+
+.account__item-user {
+
+}

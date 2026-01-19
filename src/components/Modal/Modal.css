@@ -1,0 +1,47 @@
+.modal {
+  left: 0;
+  width: 100%;
+  height: 115%;
+  z-index: 999;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--modal-back);
+  top: 0;
+}
+
+.modal__content {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  min-height: 10px;
+  z-index: 5;
+}
+
+.modal__content[datatype='film'] {
+  width: 960px;
+  min-height: 540px;
+  background-color: var(--secondary);
+  border: 1px solid var(--disabled);
+}
+
+.modal__content[datatype='user'] {
+  width: 420px;
+  min-height: 455px;
+  padding: 71px 40px 15px 40px;
+  border-radius: 24px;
+  background-color: var(--primary);
+  align-items: normal;
+}
+
+.btn-reset.modal__close {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background-color: var(--primary);
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  right: -72px;
+  top: 5px;
+}

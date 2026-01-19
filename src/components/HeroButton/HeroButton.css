@@ -1,0 +1,18 @@
+.btn-reset.hero-button {
+  width: 66px;
+  min-height: 58px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary);
+  border: 1px solid var(--input-border);
+  border-radius: 28px;
+}
+
+.btn-reset.hero-button--active > svg > path {
+  stroke: none;
+  fill: var(--active);
+}
+
+.heart > path {
+  stroke: var(--primary);
+}

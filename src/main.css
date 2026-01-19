@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+:root {
+  /* Base colors */
+  --primary: #fff;
+  --primary-opacity: rgba(255, 255, 255, 0.7);
+  --secondary: #393b3c;
+  --black: #000;
+  --black_disabled: #747474;
+
+  /* Background */
+  --background:
+    linear-gradient(to bottom, rgba(39, 135, 245, 0.2) 0%, rgba(163, 147, 245, 0.2) 100%),
+    linear-gradient(to bottom, #000000ff 70%, #272424ff 100%);
+
+  /* Project specific colors */
+  --sky_blue: #67a5eb;
+  --blue_dark: #45526e;
+  --pink: #dc5dfc;
+  --active: #b4a9ff;
+
+  /* States */
+  --error: #ff7575;
+  --disabled: rgba(255, 255, 255, 0.5);
+
+  /* Input colors */
+  --input-secondary: rgba(255, 255, 255, 0.8);
+  --input-back: rgba(255, 255, 255, 0.15);
+  --input-border: rgba(0, 0, 0, 0.4);
+  --input-placeholder: #999999;
+
+  /* Rating colors */
+  --rating-excellent: #a59400;
+  --rating-good: #308e21;
+  --rating-average: #777777;
+  --rating-poor: #c82020;
+
+  /* MovieCard colors */
+  --number-color: #6a5dc2;
+  --card-border: rgba(255, 255, 255, 0.25);
+
+  /* Modal background */
+  --modal-back: #0000009e;
+}
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-width: 320px;
+  font-family: 'Play', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.1;
+  background: var(--background);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  max-width: 100%;
+  vertical-align: baseline;
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.btn-reset {
+  padding: 0;
+  border: 0;
+  background: none;
+  outline: none;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.none {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+input {
+  border: none;
+  background: none;
+  outline: none;
+}

@@ -1,0 +1,23 @@
+.menu__item {
+  width: 67px;
+  min-height: 32px;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  transition:
+    color 0.3s ease-in-out,
+    border 0.3s ease-in-out;
+}
+
+.menu__item[data-type='desktop'] {
+  border-bottom: 1px solid var(--pink);
+}
+
+.menu__item[data-type='mobile'] {
+  border-bottom: none;
+}
+
+.menu__item--active {
+  border-bottom: none;
+  color: var(--active);
+}

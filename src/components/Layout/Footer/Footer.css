@@ -1,0 +1,8 @@
+.footer > .container {
+  align-items: center;
+  justify-content: end;
+}
+
+.footer {
+  padding-bottom: 40px;
+}

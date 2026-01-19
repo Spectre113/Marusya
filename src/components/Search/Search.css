@@ -1,0 +1,22 @@
+.header__form {
+  width: 593px;
+  min-height: 48px;
+  padding-left: 19px;
+  align-items: center;
+  background-color: var(--secondary);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.header__input {
+  color: var(--primary);
+  font-size: 18px;
+}
+
+.header__input::placeholder {
+  color: var(--disabled);
+}
+
+.header__search-image {
+  margin-right: 10px;
+}

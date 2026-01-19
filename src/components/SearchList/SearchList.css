@@ -1,0 +1,24 @@
+.list-reset.search__list {
+  width: 559px;
+  height: 477px;
+  padding: 14px 18px;
+  position: absolute;
+  top: 58px;
+  left: 97px;
+  background-color: var(--secondary);
+  border-radius: 8px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.search__list::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.search__list {
+  align-items: center;
+  justify-content: center;
+}

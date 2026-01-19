@@ -1,0 +1,14 @@
+.topMovies {
+  margin-bottom: 60px;
+}
+
+.topMovie__title {
+  margin-bottom: 67px;
+  font-size: 40px;
+  color: var(--primary);
+}
+
+.form-error {
+  justify-content: center;
+  color: var(--error);
+}

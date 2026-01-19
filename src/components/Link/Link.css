@@ -1,0 +1,19 @@
+.header-link {
+  position: relative;
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.header-link--selected::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 101%;
+  height: 1px;
+  background: var(--pink);
+  bottom: -10px;
+}
+
+.footer-link:not(:last-child) {
+  margin-right: 24px;
+}
