@@ -4,6 +4,7 @@
   /* Base colors */
   --primary: #fff;
   --primary-opacity: rgba(255, 255, 255, 0.7);
+  --primary-dim: rgba(255, 255, 255, 0.25);
   --secondary: #393b3c;
   --black: #000;
   --black_disabled: #747474;

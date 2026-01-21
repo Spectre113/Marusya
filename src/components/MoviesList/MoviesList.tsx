@@ -6,7 +6,7 @@ import './MoviesList.css';
 
 export interface MoviesListProps {
   movies: Movie[];
-  variant?: 'default' | 'top' | 'genre';
+  variant?: 'default' | 'top';
   showGenre?: boolean;
   onCardClick?: (id: number) => void;
   onRemove?: (movieId: number) => void;

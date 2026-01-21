@@ -1,0 +1,4 @@
+.genres__list {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

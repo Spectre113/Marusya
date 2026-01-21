@@ -4,12 +4,14 @@ import { Account } from './pages/Account';
 import { AuthProvider } from './contexts/AuthContext';
 import { useAuth } from './hooks/useAuth';
 import { FilmPage } from './pages/Film';
+import { Genres } from './pages/Genres';
+import { Loader } from './components/Loader/Loader';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { profileQuery } = useAuth();
 
   if (profileQuery.isPending) {
-    return <div>Загрузка...</div>;
+    return <Loader />;
   }
 
   if (profileQuery.isError || !profileQuery.data) {
@@ -32,6 +34,7 @@ function AppRoutes() {
         }
       />
       <Route path="/movie/:id" element={<FilmPage />} />
+      <Route path="/genres" element={<Genres />} />
     </Routes>
   );
 }

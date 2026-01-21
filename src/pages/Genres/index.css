@@ -1,0 +1,9 @@
+.genre__title {
+  margin-bottom: 65px;
+  color: var(--primary);
+  font-size: 48px;
+}
+
+.genre {
+  padding: 34px 0;
+}

@@ -48,7 +48,7 @@ export const Hero = ({ onClick, onButtonClick, profileData, type = 'mainPage', i
   switch (type === 'mainPage' ? randomMovie.status : movieQuery.status) {
     case 'pending':
       return (
-        <div className="hero-loader">
+        <div className="flex hero-loader">
           <Spinner />
         </div>
       );

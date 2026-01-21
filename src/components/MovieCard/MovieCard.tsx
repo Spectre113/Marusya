@@ -4,7 +4,7 @@ import './MovieCard.css';
 
 export interface MovieCardProps {
   movie: Movie;
-  variant?: 'default' | 'top' | 'genre';
+  variant?: 'default' | 'top';
   showGenre?: boolean;
   position?: number;
   onClick?: () => void;
