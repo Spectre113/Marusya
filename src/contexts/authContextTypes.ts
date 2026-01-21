@@ -44,6 +44,7 @@ export interface AuthContextType {
   handlePasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handlePasswordConfirmChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   closeModal: () => void;
+  logoutLocal: () => void;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);

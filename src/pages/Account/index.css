@@ -12,7 +12,7 @@
 .account__buttons {
   display: flex;
   gap: 69px;
-  margin-bottom: 71px;
+  margin-bottom: 29px;
 }
 
 .account__content {
@@ -48,7 +48,8 @@
 }
 
 .account__settings {
-  padding: 40px 20px;
+  flex-direction: column;
+  padding: 40px 0;
   text-align: center;
   color: var(--primary);
   font-size: 18px;
@@ -65,10 +66,33 @@
 .account__item-user {
   width: 60px;
   height: 60px;
+  margin-right: 15px;
+  align-items: center;
+  justify-content: center;
   background: var(--primary-opacity);
   border-radius: 30px;
+  font-size: 24px;
+  font-weight: 700;
 }
 
-.account__item-user {
+.account__item-info-block {
+  flex-direction: column;
+  align-items: start;
+}
 
+.account__item-info {
+  margin-bottom: 10px;
+}
+
+.account__item:not(:last-child) {
+  margin-bottom: 41px;
+}
+
+.account__item-name {
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.list-reset.account__list {
+  margin-bottom: 65px;
 }

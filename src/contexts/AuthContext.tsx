@@ -5,6 +5,7 @@ import { userRegister, UserRequestSchema } from '../api/auth/user-register';
 import { fetchProfile, type ProfileResponse } from '../api/auth/profile';
 import { ZodError } from 'zod';
 import { AuthContext, type AuthContextType, type ModalType } from './authContextTypes';
+import { queryClient } from '../api/queryClient';
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -28,7 +29,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     passwordConfirm?: string;
   }>({});
 
-  const hasStoredUserName = useMemo(() => !!localStorage.getItem('userName'), []);
+  const [hasStoredUserName, setHasStoredUserName] = useState(() => !!localStorage.getItem('userName'));
 
   const profileQuery = useQuery<ProfileResponse>({
     queryKey: ['profile'],
@@ -54,8 +55,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       }
       return storedName;
     }
-    return localStorage.getItem('userName');
-  }, [profileQuery.status, profileQuery.data, profileQuery.error]);
+    return hasStoredUserName ? localStorage.getItem('userName') : null;
+  }, [profileQuery.status, profileQuery.data, profileQuery.error, hasStoredUserName]);
 
   const loginMutation = useMutation({
     mutationFn: login,
@@ -70,6 +71,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setModalType(null);
       if (email) {
         localStorage.setItem('userName', email);
+        setHasStoredUserName(true);
       }
       profileQuery.refetch();
     },
@@ -203,6 +205,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setRegisterErrors({});
   };
 
+  const logoutLocal = () => {
+    localStorage.removeItem('userName');
+    setHasStoredUserName(false);
+    queryClient.removeQueries({ queryKey: ['profile'] });
+    queryClient.removeQueries({ queryKey: ['favorites'] });
+    queryClient.setQueryData(['profile'], null);
+  };
+
   const value: AuthContextType = {
     profileQuery,
     userName,
@@ -228,6 +238,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     handlePasswordChange,
     handlePasswordConfirmChange,
     closeModal,
+    logoutLocal,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

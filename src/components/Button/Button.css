@@ -48,6 +48,10 @@
   font-size: 24px;
 }
 
+.button[data-width='long'] {
+  width: 262px;
+}
+
 .button[data-variant='logIn'][data-width='wide'] {
   width: 253px;
   letter-spacing: 0px;
