@@ -42,7 +42,7 @@ export const useSearch = () => {
       case 'pending':
         return <SearchList isLoading={true} />;
       case 'success':
-        return <SearchList movies={searchQuery.data} onItemClick={(id) => console.log(id)} />;
+        return <SearchList movies={searchQuery.data} />;
       case 'error':
         return <span className="search__error">Произошла ошибка</span>;
       default:

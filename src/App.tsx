@@ -3,6 +3,7 @@ import { Home } from './pages/Home';
 import { Account } from './pages/Account';
 import { AuthProvider } from './contexts/AuthContext';
 import { useAuth } from './hooks/useAuth';
+import { FilmPage } from './pages/Film';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { profileQuery } = useAuth();
@@ -30,6 +31,7 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
+      <Route path="/movie/:id" element={<FilmPage />} />
     </Routes>
   );
 }

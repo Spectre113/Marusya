@@ -1,0 +1,46 @@
+.loader-content {
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.film-info__title {
+  margin-bottom: 66px;
+  font-size: 40px;
+  line-height: 50px;
+  color: var(--primary);
+}
+
+.film-info__list {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.film-info__item {
+  width: 448px;
+  display: flex;
+}
+
+.film-info__label {
+  font-size: 18px;
+  color: var(--primary);
+}
+
+.film-info__dots {
+  position: relative;
+  flex-grow: 1;
+  border-bottom: 1px dotted var(--disabled);
+  margin: 0 12px;
+  top: -4px;
+}
+
+.film-info__value {
+  width: 120px;
+  color: var(--primary);
+  white-space: nowrap;
+  font-size: 18px;
+}
+
+.film-info__item:not(:last-child) {
+  margin-bottom: 16px;
+}

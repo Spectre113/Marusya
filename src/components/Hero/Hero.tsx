@@ -1,29 +1,39 @@
 import { useQuery } from '@tanstack/react-query';
 import './Hero.css';
-import { fetchRandomMovie } from '../../api/movies/movies';
+import { fetchMovie, fetchRandomMovie } from '../../api/movies/movies';
 import { Rating } from '../../components/Rating/Rating';
 import { Button } from '../../components/Button/Button';
 import { HeroButton } from '../../components/HeroButton/HeroButton';
 import { Heart, Refresh } from '../../components/HeroButton/heroButtons';
-import { Loader } from '../../components/Loader/Loader';
 import { useToggle } from '../../hooks/useToggle';
 import { Modal } from '../../components/Modal/Modal';
 import { useEffect, useState } from 'react';
 import { Spinner } from '../../components/Spinner/Spinner';
 import type { ProfileResponse } from '../../api/auth/profile';
 
-export const Hero = ({
-  onClick,
-  profileData,
-}: {
+export interface HeroProps {
   onClick: (id: number) => void;
+  onButtonClick?: (id: number) => void;
   profileData?: ProfileResponse;
-}) => {
+  type?: 'mainPage' | 'filmPage';
+  id?: number;
+}
+
+export const Hero = ({ onClick, onButtonClick, profileData, type = 'mainPage', id }: HeroProps) => {
   const randomMovie = useQuery({
     queryFn: () => fetchRandomMovie(),
     queryKey: ['randomMovie'],
     refetchOnWindowFocus: false,
   });
+
+  const movieQuery = useQuery({
+    queryKey: ['movie', id],
+    queryFn: () => fetchMovie(id!),
+    enabled: type === 'filmPage' && typeof id === 'number',
+    refetchOnWindowFocus: false,
+  });
+
+  const movie = type === 'mainPage' ? randomMovie.data : movieQuery.data;
 
   const [isOpen, toggle] = useToggle(false);
   const [isTrailerLoading, setIsTrailerLoading] = useState(true);
@@ -35,46 +45,69 @@ export const Hero = ({
     }
   }, [isOpen]);
 
-  switch (randomMovie.status) {
+  switch (type === 'mainPage' ? randomMovie.status : movieQuery.status) {
     case 'pending':
-      return <Loader />;
+      return (
+        <div className="hero-loader">
+          <Spinner />
+        </div>
+      );
+    case 'error': {
+      const err = type === 'mainPage' ? randomMovie.error : movieQuery.error;
+      const message = err instanceof Error ? err.message : 'Unknown error';
+      return (
+        <div className="hero__error">
+          Ошибка загрузки: {message}
+          <button
+            onClick={() => (type === 'mainPage' ? randomMovie.refetch() : movieQuery.refetch())}
+          >
+            Повторить
+          </button>
+        </div>
+      );
+    }
     case 'success': {
-      const currentIsFavorite =
-        profileData?.favorites.includes(String(randomMovie.data.id)) ?? false;
+      if (!movie) return null;
+
+      const currentIsFavorite = profileData?.favorites.includes(String(movie.id)) ?? false;
+
       return (
         <section className="hero">
           <div className="flex container">
             <div className="flex hero__info">
               <div className="flex hero__top-menu">
-                <Rating value={randomMovie.data.tmdbRating} size="large" />
-                <span className="hero__data hero__date">
-                  {randomMovie.data.releaseDate.split('-')[0]}
-                </span>
-                {randomMovie.data.genres?.[0] && (
-                  <span className="hero__data hero__genre">{randomMovie.data.genres[0]}</span>
+                <Rating value={movie.tmdbRating} size="large" />
+                <span className="hero__data hero__date">{movie.releaseDate.split('-')[0]}</span>
+                {movie.genres?.[0] && (
+                  <span className="hero__data hero__genre">{movie.genres[0]}</span>
                 )}
-                <span className="hero__data hero__duration">{randomMovie.data.runtime}m</span>
+                <span className="hero__data hero__duration">{movie.runtime}m</span>
               </div>
-              <h1 className="hero__title">{randomMovie.data.title}</h1>
-              <p className="hero__description">{randomMovie.data.plot}</p>
+              <h1 className="hero__title">{movie.title}</h1>
+              <p className="hero__description">{movie.plot}</p>
               <div className="flex hero__buttons-section">
                 <Button title="Трейлер" onClick={toggle} />
-                <Button title="О фильме" variant="secondary" subclass="dark" />
+                {type === 'mainPage' && (
+                  <Button
+                    title="О фильме"
+                    variant="secondary"
+                    subclass="dark"
+                    onClick={() => onButtonClick && onButtonClick(movie.id)}
+                  />
+                )}
                 <HeroButton
                   imagePath={<Heart />}
-                  onClick={() => onClick(randomMovie.data.id)}
+                  onClick={() => onClick(movie.id)}
                   isFavorite={currentIsFavorite}
                 />
-                <HeroButton imagePath={<Refresh />} onClick={() => randomMovie.refetch()} />
+                {type === 'mainPage' && (
+                  <HeroButton imagePath={<Refresh />} onClick={() => randomMovie.refetch()} />
+                )}
               </div>
             </div>
             <div className="flex hero__poster">
-              {randomMovie.data.backdropUrl ? (
-                <img
-                  className="hero__poster-img"
-                  src={randomMovie.data.backdropUrl}
-                  alt="Постер к фильму"
-                />
+              {movie.backdropUrl ? (
+                <img className="hero__poster-img" src={movie.backdropUrl} alt="Постер к фильму" />
               ) : (
                 <div className="hero__poster-fallback">Нет постера</div>
               )}
@@ -82,10 +115,10 @@ export const Hero = ({
           </div>
           <Modal isOpen={isOpen} onClose={toggle}>
             {(() => {
-              if (!randomMovie.data.trailerUrl) {
+              if (!movie.trailerUrl) {
                 return <span className="modal__error">Трейлер не доступен</span>;
               }
-              const urlMatch = randomMovie.data.trailerUrl.match(/[?&]v=([^&]+)/);
+              const urlMatch = movie.trailerUrl.match(/[?&]v=([^&]+)/);
               const videoId = urlMatch ? urlMatch[1] : null;
               if (!videoId) {
                 return <span className="modal__error">Трейлер не доступен</span>;
@@ -111,16 +144,6 @@ export const Hero = ({
             })()}
           </Modal>
         </section>
-      );
-    }
-    case 'error': {
-      const err = randomMovie.error;
-      const message = err instanceof Error ? err.message : 'Unknown error';
-      return (
-        <div className="hero__error">
-          Ошибка загрузки: {message}
-          <button onClick={() => randomMovie.refetch()}>Повторить</button>
-        </div>
       );
     }
   }

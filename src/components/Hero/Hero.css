@@ -73,3 +73,9 @@
 .hero__poster {
   align-items: center;
 }
+
+.hero-loader {
+  min-height: 200px;
+  justify-content: center;
+  align-items: center;
+}

@@ -2,12 +2,13 @@ import './index.css';
 import { useQuery } from '@tanstack/react-query';
 import { AppLayout } from '../../components/Layout/AppLayout';
 import { MoviesList } from '../../components/MoviesList/MoviesList';
-import { Hero } from './Hero';
+import { Hero } from '../../components/Hero/Hero';
 import { fetchTopMovies } from '../../api/movies/movies';
 import { Loader } from '../../components/Loader/Loader';
 import { Ok, Telegram, Vk, YouTube } from '../../components/Link/linkIcons';
 import { useAuth } from '../../hooks/useAuth';
 import { useFavorites } from '../../hooks/useFavorites';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
   const topMoviesQuery = useQuery({
@@ -18,12 +19,21 @@ export const Home = () => {
 
   const { profileQuery } = useAuth();
   const { handleToggleFavorite } = useFavorites();
+  const navigate = useNavigate();
 
   let topMovies: React.ReactNode = null;
 
+  const handleClick = (id: number) => {
+    navigate(`/movie/${id}`);
+  };
+
   switch (topMoviesQuery.status) {
     case 'pending':
-      topMovies = <Loader />;
+      topMovies = (
+        <div className="flex home-loader">
+          <Loader />;
+        </div>
+      );
       break;
     case 'success': {
       topMovies = (
@@ -33,6 +43,7 @@ export const Home = () => {
           showLoadMore={false}
           hasMore={false}
           isLoading={false}
+          onCardClick={handleClick}
         />
       );
       break;
@@ -58,7 +69,12 @@ export const Home = () => {
         { path: '#', variant: 'footer', imagePath: <Telegram /> },
       ]}
     >
-      <Hero onClick={handleToggleFavorite} profileData={profileQuery.data} />
+      <Hero
+        onClick={handleToggleFavorite}
+        profileData={profileQuery.data}
+        type="mainPage"
+        onButtonClick={handleClick}
+      />
       <section className="topMovies">
         <div className="container">
           <h2 className="topMovie__title">Топ 10 фильмов</h2>

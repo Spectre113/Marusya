@@ -1,15 +1,22 @@
+import { useNavigate } from 'react-router-dom';
 import type { Movie } from '../../api/movies/movies';
 import { SearchItem } from '../SearchItem/SearchItem';
 import { Spinner } from '../Spinner/Spinner';
+
 import './SearchList.css';
 
 export interface SearchListProps {
   movies?: Movie[];
-  onItemClick?: (id: number) => void;
   isLoading?: boolean;
 }
 
-export const SearchList = ({ movies, onItemClick, isLoading }: SearchListProps) => {
+export const SearchList = ({ movies, isLoading }: SearchListProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = (id: number) => {
+    navigate(`/movie/${id}`);
+  };
+
   if (isLoading) {
     return (
       <ul className="flex list-reset search__list">
@@ -20,9 +27,7 @@ export const SearchList = ({ movies, onItemClick, isLoading }: SearchListProps) 
   return (
     <ul className="list-reset search__list">
       {movies &&
-        movies.map((movie) => (
-          <SearchItem movie={movie} key={movie.id} onClick={() => onItemClick?.(movie.id)} />
-        ))}
+        movies.map((movie) => <SearchItem movie={movie} key={movie.id} onClick={handleClick} />)}
     </ul>
   );
 };

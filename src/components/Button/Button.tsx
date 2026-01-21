@@ -6,7 +6,7 @@ export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'logIn';
   subclass?: 'bright' | 'dark';
   type?: 'button' | 'submit' | 'reset';
-  width?: 'medium' | 'wide';
+  width?: 'medium' | 'wide' | 'long';
   onClick?: MouseEventHandler<HTMLButtonElement>;
   isDisabled?: boolean;
   isLog?: boolean;

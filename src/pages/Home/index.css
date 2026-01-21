@@ -12,3 +12,8 @@
   justify-content: center;
   color: var(--error);
 }
+
+.home-loader {
+  align-items: center;
+  justify-content: center;
+}

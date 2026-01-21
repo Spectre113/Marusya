@@ -26,6 +26,9 @@ export const Account = () => {
     queryFn: fetchFavorites,
     retry: false,
     enabled: activeTab === 'favorites',
+    staleTime: 0,
+    refetchOnWindowFocus: false,
+    refetchOnMount: true,
   });
 
   const logoutMutation = useMutation({
@@ -37,6 +40,16 @@ export const Account = () => {
   });
 
   const { removeFavoriteMutation } = useFavorites();
+
+  const loaderContent = (
+    <div className="home-loader">
+      <Loader />
+    </div>
+  );
+
+  const handleClick = (id: number) => {
+    navigate(`/movie/${id}`);
+  };
 
   const handleRemoveFavorite = (movieId: number) => {
     removeFavoriteMutation.mutate(movieId, {
@@ -82,7 +95,7 @@ export const Account = () => {
         <div className="account__content">
           {activeTab === 'favorites' && (
             <>
-              {favoritesQuery.isPending && <Loader />}
+              {favoritesQuery.isPending && loaderContent}
               {favoritesQuery.isError && (
                 <div className="account__error">Ошибка загрузки избранных фильмов</div>
               )}
@@ -96,7 +109,7 @@ export const Account = () => {
                   movies={favoritesQuery.data}
                   variant="default"
                   showGenre={true}
-                  onCardClick={(id) => console.log('Movie clicked:', id)}
+                  onCardClick={handleClick}
                   onRemove={handleRemoveFavorite}
                   isLoading={false}
                   showLoadMore={false}
@@ -107,7 +120,7 @@ export const Account = () => {
           )}
           {activeTab === 'settings' && (
             <div className="flex account__settings">
-              {profileQuery.isPending && <Loader />}
+              {profileQuery.isPending && loaderContent}
               {profileQuery.isError && (
                 <div className="account__error">Ошибка загрузки данных профиля</div>
               )}
