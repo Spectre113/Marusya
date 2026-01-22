@@ -1,0 +1,21 @@
+.movies-genre {
+  padding: 34px 0;
+}
+
+.movies-genre__title {
+  margin-bottom: 65px;
+  padding-left: 13px;
+  font-size: 48px;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.movies-genre__title > span {
+  position: relative;
+  margin-right: 29px;
+  top: -5px;
+}
+
+.movies-genre__button {
+  justify-content: center;
+}

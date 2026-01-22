@@ -20,7 +20,11 @@ export const GenreList = () => {
   });
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div className="flex home-loader">
+        <Loader />
+      </div>
+    );
   }
 
   if (isError || !apiGenres) {

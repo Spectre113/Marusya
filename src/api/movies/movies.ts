@@ -120,3 +120,21 @@ export async function fetchMovie(id: number): Promise<Movie> {
     })
     .then((data) => MovieSchema.parse(data));
 }
+
+export async function fetchMoviesByGenre(genre: string, page = 1, count = 50): Promise<Movie[]> {
+  const params = new URLSearchParams({
+    genre,
+    page: page.toString(),
+    count: count.toString(),
+  });
+
+  const response = await fetch(`https://cinemaguide.skillbox.cc/movie?${params.toString()}`, {
+    credentials: 'include',
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch movies');
+  }
+
+  return response.json();
+}

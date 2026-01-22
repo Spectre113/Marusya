@@ -4,11 +4,11 @@ import { AppLayout } from '../../components/Layout/AppLayout';
 import { MoviesList } from '../../components/MoviesList/MoviesList';
 import { Hero } from '../../components/Hero/Hero';
 import { fetchTopMovies } from '../../api/movies/movies';
-import { Loader } from '../../components/Loader/Loader';
 import { Ok, Telegram, Vk, YouTube } from '../../components/Link/linkIcons';
 import { useAuth } from '../../hooks/useAuth';
 import { useFavorites } from '../../hooks/useFavorites';
 import { useNavigate } from 'react-router-dom';
+import { Spinner } from '../../components/Spinner/Spinner';
 
 export const Home = () => {
   const topMoviesQuery = useQuery({
@@ -31,7 +31,7 @@ export const Home = () => {
     case 'pending':
       topMovies = (
         <div className="flex home-loader">
-          <Loader />;
+          <Spinner />;
         </div>
       );
       break;

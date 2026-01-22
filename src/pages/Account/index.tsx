@@ -42,7 +42,7 @@ export const Account = () => {
   const { removeFavoriteMutation } = useFavorites();
 
   const loaderContent = (
-    <div className="home-loader">
+    <div className="flex home-loader">
       <Loader />
     </div>
   );

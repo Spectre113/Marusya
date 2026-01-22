@@ -6,6 +6,7 @@ import { useAuth } from './hooks/useAuth';
 import { FilmPage } from './pages/Film';
 import { Genres } from './pages/Genres';
 import { Loader } from './components/Loader/Loader';
+import { MoviesGenre } from './pages/MoviesGenre';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { profileQuery } = useAuth();
@@ -35,6 +36,7 @@ function AppRoutes() {
       />
       <Route path="/movie/:id" element={<FilmPage />} />
       <Route path="/genres" element={<Genres />} />
+      <Route path="/genres/:genre" element={<MoviesGenre />} />
     </Routes>
   );
 }
