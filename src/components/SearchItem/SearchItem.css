@@ -41,7 +41,6 @@
   .search__item {
     min-width: 220px;
     min-height: 320px;
-    height: 320px;
     flex-direction: column;
     margin-bottom: 0;
     padding: 0;

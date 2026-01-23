@@ -1,6 +1,6 @@
 .list-reset.search__list {
   width: 559px;
-  height: 477px;
+  min-height: 477px;
   padding: 14px 18px;
   position: absolute;
   top: 58px;
@@ -40,15 +40,16 @@
 @media (max-width: 1024px) {
   .list-reset.search__list {
     width: 70%;
-    height: 378px;
+    min-height: 378px;
     margin: 0 auto;
-    padding-top: 5px;
+    padding-top: 15px;
     padding-left: 21px;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
     justify-content: flex-start;
+    align-items: flex-start;
   }
 }
 

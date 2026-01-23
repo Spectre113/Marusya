@@ -96,7 +96,7 @@ export const AppLayout = ({ children, headerLinks, footerLinks }: AppLayoutProps
               entry={{
                 type: 'submit',
                 title: 'Войти',
-                onClick: () => {},
+                onClick: undefined,
                 variant: 'primary',
                 subclass: 'bright',
                 width: 'wide',
@@ -161,7 +161,7 @@ export const AppLayout = ({ children, headerLinks, footerLinks }: AppLayoutProps
               registerButton={{
                 type: 'submit',
                 title: 'Зарегистрироваться',
-                onClick: () => {},
+                onClick: undefined,
                 variant: 'primary',
                 subclass: 'bright',
                 width: 'wide',
