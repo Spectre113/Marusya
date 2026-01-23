@@ -1,6 +1,6 @@
 .list-reset.search__list {
   width: 559px;
-  min-height: 477px;
+  max-height: 477px;
   padding: 14px 18px;
   position: absolute;
   top: 58px;
@@ -40,7 +40,7 @@
 @media (max-width: 1024px) {
   .list-reset.search__list {
     width: 70%;
-    min-height: 378px;
+    max-height: 378px;
     margin: 0 auto;
     padding-top: 15px;
     padding-left: 21px;
@@ -56,6 +56,8 @@
 @media (max-width: 768px) {
   .list-reset.search__list {
     width: 100%;
+    min-height: 378px;
+    max-height: 500px;
     left: 0;
   }
 }
