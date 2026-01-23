@@ -13,7 +13,7 @@ export const MoviesGenre = () => {
   const navigate = useNavigate();
   const { genre } = useParams<{ genre: string }>();
   const { isSmallScreen } = useDevice();
-  const pageSize = isSmallScreen ? 5 : 15;
+  const pageSize = isSmallScreen ? 6 : 15;
 
   const handleClick = (id: number) => {
     navigate(`/movie/${id}`);
@@ -27,14 +27,6 @@ export const MoviesGenre = () => {
   );
 
   const movies = data?.pages.flat() ?? [];
-
-  if (isLoading) {
-    return (
-      <div className="flex loader-content">
-        <Loader />;
-      </div>
-    );
-  }
 
   return (
     <AppLayout
@@ -68,20 +60,28 @@ export const MoviesGenre = () => {
             </span>
             {title}
           </h1>
+
           <div className="movies-genre__list">
-            <MoviesList movies={movies} variant="default" onCardClick={handleClick} genreType />
-          </div>
-          <div className="flex movies-genre__button">
-            {hasNextPage && (
-              <Button
-                title={isFetchingNextPage ? 'Загрузка...' : 'Показать ещё'}
-                onClick={() => {
-                  fetchNextPage();
-                }}
-                width="medium-big"
-              />
+            {isLoading ? (
+              <div className="flex loader-content">
+                <Loader />
+              </div>
+            ) : (
+              <MoviesList movies={movies} variant="default" onCardClick={handleClick} genreType />
             )}
           </div>
+
+          {!isLoading && (
+            <div className="flex movies-genre__button">
+              {hasNextPage && (
+                <Button
+                  title={isFetchingNextPage ? 'Загрузка...' : 'Показать ещё'}
+                  onClick={() => fetchNextPage()}
+                  width="medium-big"
+                />
+              )}
+            </div>
+          )}
         </div>
       </section>
     </AppLayout>
