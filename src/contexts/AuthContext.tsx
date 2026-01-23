@@ -6,6 +6,7 @@ import { fetchProfile, type ProfileResponse } from '../api/auth/profile';
 import { ZodError } from 'zod';
 import { AuthContext, type AuthContextType, type ModalType } from './authContextTypes';
 import { queryClient } from '../api/queryClient';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -19,6 +20,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [surname, setSurname] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
   const [loginError, setLoginError] = useState<string | null>(null);
   const [registerErrors, setRegisterErrors] = useState<{
@@ -29,7 +31,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     passwordConfirm?: string;
   }>({});
 
-  const [hasStoredUserName, setHasStoredUserName] = useState(() => !!localStorage.getItem('userName'));
+  const [hasStoredUserName, setHasStoredUserName] = useState(
+    () => !!localStorage.getItem('userName')
+  );
 
   const profileQuery = useQuery<ProfileResponse>({
     queryKey: ['profile'],
@@ -74,6 +78,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setHasStoredUserName(true);
       }
       profileQuery.refetch();
+      navigate('/profile');
     },
   });
 
