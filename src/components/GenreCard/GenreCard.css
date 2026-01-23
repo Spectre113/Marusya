@@ -13,7 +13,7 @@
 
 .genre__content {
   position: relative;
-  height: -webkit-fill-available;
+  height: auto;
   flex-direction: column;
   align-items: center;
 }
