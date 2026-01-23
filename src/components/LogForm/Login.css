@@ -15,14 +15,11 @@
 
 .input-wrapper-block {
   flex-direction: column;
+  margin-bottom: 24px;
 }
 
 .input-wrapper-block > .input-wrapper:first-child {
   margin-bottom: 12px;
-}
-
-.input-wrapper-block {
-  margin-bottom: 24px;
 }
 
 .button-wrapper > *:first-child {
@@ -33,4 +30,23 @@
   font-size: 18px;
   font-weight: bold;
   color: var(--black);
+}
+
+.input-wrapper-block > * {
+  margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+  .logo-wrapper > svg {
+    width: 132.13px;
+    height: 29.5px;
+  }
+
+  .logo-wrapper {
+    margin-bottom: 33px;
+  }
+
+  .input-wrapper-block {
+    margin-bottom: 12px;
+  }
 }

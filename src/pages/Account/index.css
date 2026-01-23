@@ -96,3 +96,51 @@
 .list-reset.account__list {
   margin-bottom: 65px;
 }
+
+.account-button__text--mobile {
+  display: none;
+}
+
+@media (max-width: 1439px) {
+  .account__content {
+    overflow-x: scroll;
+  }
+}
+
+@media (max-width: 768px) {
+  .account__title {
+    font-size: 24px;
+    margin-bottom: 35px;
+  }
+
+  .account__buttons > .button[data-variant='logIn'][data-width='wide'] {
+    width: 155px;
+    font-size: 24px;
+  }
+
+  .account-button__text--desktop {
+    display: none;
+  }
+
+  .account-button__text--mobile {
+    display: inline;
+  }
+
+  .account-button--selected::after {
+    width: 155px;
+  }
+
+  .account__buttons {
+    gap: 30px;
+  }
+
+  .account__content > .movies > .movies-list {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 374px) {
+  .account__buttons {
+    gap: 20px;
+  }
+}

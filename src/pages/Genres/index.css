@@ -7,3 +7,14 @@
 .genre {
   padding: 34px 0;
 }
+
+@media (max-width: 768px) {
+  .genre {
+    padding: 29px 0;
+  }
+
+  .genre__title {
+    margin-bottom: 39px;
+    font-size: 24px;
+  }
+}

@@ -7,6 +7,7 @@ import './MoviesList.css';
 export interface MoviesListProps {
   movies: Movie[];
   variant?: 'default' | 'top';
+  genreType?: boolean;
   showGenre?: boolean;
   onCardClick?: (id: number) => void;
   onRemove?: (movieId: number) => void;
@@ -26,11 +27,14 @@ export const MoviesList = ({
   showLoadMore = false,
   onLoadMore,
   hasMore,
+  genreType,
 }: MoviesListProps) => {
   if (isLoading) return <Loader />;
   return (
-    <div className="flex movies">
-      <ul className="flex list-reset movies-list">
+    <div className={`flex movies ${genreType === true ? 'movies--genres' : 'movies--default'}`}>
+      <ul
+        className={`flex list-reset movies-list ${genreType === true ? 'movies-list--genres' : 'movies-list--default'}`}
+      >
         {movies.map((movie, index) => (
           <MovieCard
             key={movie.id}

@@ -2,7 +2,7 @@ import type { MouseEventHandler, ReactNode } from 'react';
 import './Button.css';
 
 export interface ButtonProps {
-  title: string;
+  title: ReactNode;
   variant?: 'primary' | 'secondary' | 'logIn';
   subclass?: 'bright' | 'dark';
   type?: 'button' | 'submit' | 'reset';

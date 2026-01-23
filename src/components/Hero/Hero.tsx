@@ -72,7 +72,7 @@ export const Hero = ({ onClick, onButtonClick, profileData, type = 'mainPage', i
       const currentIsFavorite = profileData?.favorites.includes(String(movie.id)) ?? false;
 
       return (
-        <section className="hero">
+        <section className={`hero${type === 'filmPage' ? ' hero--filmPage' : ''}`}>
           <div className="flex container">
             <div className="flex hero__info">
               <div className="flex hero__top-menu">
@@ -85,7 +85,11 @@ export const Hero = ({ onClick, onButtonClick, profileData, type = 'mainPage', i
               </div>
               <h1 className="hero__title">{movie.title}</h1>
               <p className="hero__description">{movie.plot}</p>
-              <div className="flex hero__buttons-section">
+              <div
+                className={`flex hero__buttons-section${
+                  type === 'filmPage' ? ' hero__buttons-section--filmPage' : ''
+                }`}
+              >
                 <Button title="Трейлер" onClick={toggle} />
                 {type === 'mainPage' && (
                   <Button
@@ -107,7 +111,13 @@ export const Hero = ({ onClick, onButtonClick, profileData, type = 'mainPage', i
             </div>
             <div className="flex hero__poster">
               {movie.backdropUrl ? (
-                <img className="hero__poster-img" src={movie.backdropUrl} alt="Постер к фильму" />
+                <img
+                  className={`hero__poster-img${
+                    type === 'filmPage' ? ' hero__poster-img--filmPage' : ''
+                  }`}
+                  src={movie.backdropUrl}
+                  alt="Постер к фильму"
+                />
               ) : (
                 <div className="hero__poster-fallback">Нет постера</div>
               )}

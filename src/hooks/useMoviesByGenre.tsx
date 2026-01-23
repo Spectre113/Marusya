@@ -1,20 +1,17 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchMoviesByGenre } from '../api/movies/movies';
 
-const PAGE_SIZE = 15;
-
-export const useMoviesByGenre = (genre: string) => {
+export const useMoviesByGenre = (genre: string, pageSize: number) => {
   return useInfiniteQuery({
-    queryKey: ['movies', 'genre', genre],
-    queryFn: ({ pageParam = 1 }) => fetchMoviesByGenre(genre, pageParam, PAGE_SIZE),
+    queryKey: ['movies', 'genre', genre, pageSize],
+    queryFn: ({ pageParam = 1 }) => fetchMoviesByGenre(genre, pageParam, pageSize),
 
     initialPageParam: 1,
 
     getNextPageParam: (lastPage, allPages) => {
-      if (lastPage.length < PAGE_SIZE) {
+      if (lastPage.length < pageSize) {
         return undefined;
       }
-
       return allPages.length + 1;
     },
   });

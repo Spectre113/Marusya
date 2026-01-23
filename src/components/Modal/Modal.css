@@ -61,3 +61,35 @@
   flex-direction: column;
   justify-content: center;
 }
+
+@media (max-width: 1439px) {
+  .btn-reset.modal__close {
+    right: 8px;
+    top: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal__content[datatype='film'] {
+    width: 100%;
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal {
+    height: 100%;
+  }
+
+  .modal__content[datatype='user'] {
+    width: 335px;
+    min-height: 410px;
+    padding: 0;
+    padding-top: 64px;
+    padding-bottom: 24px;
+  }
+
+  .button-wrapper > .button {
+    width: 295px;
+  }
+}

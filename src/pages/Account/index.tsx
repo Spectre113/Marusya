@@ -76,15 +76,26 @@ export const Account = () => {
         <h1 className="account__title">Мой аккаунт</h1>
         <div className="account__buttons">
           <Button
-            title="Избранные фильмы"
+            title={
+              <>
+                <span className="account-button__text--desktop">Избранные фильмы</span>
+                <span className="account-button__text--mobile">Избранное</span>
+              </>
+            }
             variant="logIn"
             width="wide"
             onClick={() => setActiveTab('favorites')}
             imageSvg={<AccountHeart />}
             className={activeTab === 'favorites' ? 'account-button--selected' : ''}
           />
+
           <Button
-            title="Настройки аккаунта"
+            title={
+              <>
+                <span className="account-button__text--desktop">Настройки аккаунта</span>
+                <span className="account-button__text--mobile">Настройки</span>
+              </>
+            }
             variant="logIn"
             width="wide"
             onClick={() => setActiveTab('settings')}

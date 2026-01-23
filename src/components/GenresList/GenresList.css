@@ -2,3 +2,16 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+@media (max-width: 1439px) {
+  .genres__list {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .genres__list {
+    justify-content: center;
+    gap: 24px;
+  }
+}

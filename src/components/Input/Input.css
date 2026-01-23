@@ -94,3 +94,13 @@
   margin-left: 16px;
   margin-top: 2px;
 }
+
+@media (max-width: 600px) {
+  .input-wrapper {
+    width: 295px;
+  }
+
+  .input-container {
+    align-items: center;
+  }
+}

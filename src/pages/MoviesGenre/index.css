@@ -19,3 +19,30 @@
 .movies-genre__button {
   justify-content: center;
 }
+
+@media (max-width: 1024px) {
+  .movies-genre {
+    margin-bottom: 36px;
+    padding: 27px 0;
+  }
+
+  .movies-genre__title {
+    margin-bottom: 42px;
+    padding-left: 10px;
+    font-size: 24px;
+  }
+
+  .movies-genre__title > span > svg {
+    width: 10.37px;
+    height: 16.97px;
+  }
+
+  .movies-genre__title > span {
+    margin-right: 19px;
+    top: 1px;
+  }
+
+  .movies-genre__button > .button {
+    width: 333px;
+  }
+}

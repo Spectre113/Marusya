@@ -109,6 +109,10 @@
     margin-bottom: 59px;
   }
 
+  .hero--filmPage {
+    margin-bottom: 46px;
+  }
+
   .hero__title {
     margin-bottom: 11px;
     font-size: 24px;
@@ -147,10 +151,22 @@
     flex: 1 1 0;
     min-width: 0;
   }
+
+  .hero__buttons-section--filmPage {
+    flex-wrap: nowrap;
+  }
+
+  .hero__buttons-section--filmPage > :first-child {
+    flex-basis: 75%;
+  }
 }
 
 @media (max-width: 375px) {
   .hero__poster-img {
     height: 234px;
+  }
+
+  .hero__poster-img--filmPage {
+    height: 260px;
   }
 }

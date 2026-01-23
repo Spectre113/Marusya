@@ -44,3 +44,38 @@
 .film-info__item:not(:last-child) {
   margin-bottom: 16px;
 }
+
+@media (max-width: 1024px) {
+  .film-info {
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .film-info__title {
+    margin-bottom: 33px;
+    font-size: 24px;
+  }
+
+  .film-info__item {
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .film-info__dots {
+    display: none;
+  }
+
+  .film-info__label {
+    font-size: 14px;
+    color: var(--disabled);
+  }
+
+  .film-info__value {
+    font-size: 18px;
+  }
+
+  .film-info__item:not(:last-child) {
+    margin-bottom: 5.5px;
+  }
+}

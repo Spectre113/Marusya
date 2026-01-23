@@ -6,11 +6,14 @@ import { MoviesList } from '../../components/MoviesList/MoviesList';
 import { useMoviesByGenre } from '../../hooks/useMoviesByGenre';
 import { Loader } from '../../components/Loader/Loader';
 import { Button } from '../../components/Button/Button';
+import { useDevice } from '../../hooks/useDevice';
 import './index.css';
 
 export const MoviesGenre = () => {
   const navigate = useNavigate();
   const { genre } = useParams<{ genre: string }>();
+  const { isSmallScreen } = useDevice();
+  const pageSize = isSmallScreen ? 5 : 15;
 
   const handleClick = (id: number) => {
     navigate(`/movie/${id}`);
@@ -19,13 +22,18 @@ export const MoviesGenre = () => {
   const title = genre ? (GENRES_MAP[genre] ?? 'Неизвестный жанр') : '';
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useMoviesByGenre(
-    genre!
+    genre!,
+    pageSize
   );
 
   const movies = data?.pages.flat() ?? [];
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div className="flex loader-content">
+        <Loader />;
+      </div>
+    );
   }
 
   return (
@@ -61,7 +69,7 @@ export const MoviesGenre = () => {
             {title}
           </h1>
           <div className="movies-genre__list">
-            <MoviesList movies={movies} variant="default" onCardClick={handleClick} />
+            <MoviesList movies={movies} variant="default" onCardClick={handleClick} genreType />
           </div>
           <div className="flex movies-genre__button">
             {hasNextPage && (

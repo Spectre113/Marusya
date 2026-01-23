@@ -36,3 +36,39 @@
 .genre__item {
   cursor: pointer;
 }
+
+@media (max-width: 1439px) {
+  .genre__item:not(:nth-child(4n)) {
+    margin-right: 0;
+  }
+
+  .genre__background {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .genre__item {
+    width: 45%;
+  }
+
+  .genre__background {
+    width: 100%;
+  }
+}
+
+@media (max-width: 688px) {
+  .genre__item {
+    width: 80%;
+  }
+
+  .genre__item-poster {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 550px) {
+  .genre__item {
+    width: 100%;
+  }
+}
