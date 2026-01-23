@@ -13,7 +13,7 @@
 
 .movie-card {
   position: relative;
-  height: -webkit-fill-available;
+  height: auto;
   min-height: inherit;
   flex-direction: column;
   align-items: center;
