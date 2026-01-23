@@ -23,3 +23,38 @@
   align-items: center;
   justify-content: center;
 }
+
+.search-spinner {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 1439px) {
+  .list-reset.search__list {
+    width: 70%;
+    left: 15%;
+    top: 63px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .list-reset.search__list {
+    width: 70%;
+    height: 378px;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-left: 21px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .list-reset.search__list {
+    width: 100%;
+    left: 0;
+  }
+}

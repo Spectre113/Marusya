@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import { Link as RouterLink, NavLink } from 'react-router-dom';
-import './Link.css';
 
 export interface LinkProps {
   value?: string;

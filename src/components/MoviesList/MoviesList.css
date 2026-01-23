@@ -13,3 +13,20 @@
 .movies-list__more {
   justify-content: center;
 }
+
+@media (max-width: 1439px) {
+  .list-reset.movies-list {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    gap: 30px;
+    padding: 13px 10px 10px 13px;
+  }
+
+  .movie-background {
+    flex: 0 0 auto;
+  }
+
+  .movie-background:not(:nth-child(5n)) {
+    margin-right: 0;
+  }
+}

@@ -45,3 +45,19 @@
   right: -72px;
   top: 5px;
 }
+
+.modal__error {
+  font-size: 20px;
+  color: var(--primary);
+}
+
+.video {
+  height: -webkit-fill-available;
+  border: none;
+}
+
+.modal-logIn {
+  margin-bottom: 10px;
+  flex-direction: column;
+  justify-content: center;
+}

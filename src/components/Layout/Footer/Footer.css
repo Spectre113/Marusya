@@ -6,3 +6,20 @@
 .footer {
   padding-bottom: 40px;
 }
+
+.footer-link:not(:last-child) {
+  margin-right: 24px;
+}
+
+@media (max-width: 1024px) {
+  .footer > .container {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-link > svg {
+    width: 24px;
+    height: 24px;
+  }
+}

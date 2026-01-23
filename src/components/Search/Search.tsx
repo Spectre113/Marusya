@@ -4,9 +4,10 @@ import './Search.css';
 export interface SearchProps {
   value?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onClose?: () => void;
 }
 
-export const Search = ({ value, onChange }: SearchProps) => {
+export const Search = ({ value, onChange, onClose }: SearchProps) => {
   return (
     <label className="flex header__form">
       <span className="header__search-image">
@@ -33,6 +34,27 @@ export const Search = ({ value, onChange }: SearchProps) => {
         placeholder="Поиск"
         onChange={onChange}
       />
+      {onClose && (
+        <button
+          type="button"
+          className="btn-reset header__search-close"
+          onClick={onClose}
+          aria-label="Закрыть поиск"
+        >
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 13 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.36396 4.94978L11.3138 0L12.728 1.41421L7.77816 6.36398L12.728 11.3137L11.3138 12.7279L6.36396 7.77818L1.41422 12.7279L0 11.3137L4.94976 6.36398L0 1.41421L1.41422 0L6.36396 4.94978Z"
+              fill="white"
+            />
+          </svg>
+        </button>
+      )}
     </label>
   );
 };

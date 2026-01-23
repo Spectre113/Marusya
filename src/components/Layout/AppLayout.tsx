@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Layout } from './Layout';
 import { useAuth } from '../../hooks/useAuth';
@@ -39,6 +39,7 @@ export const AppLayout = ({ children, headerLinks, footerLinks }: AppLayoutProps
   } = useAuth();
 
   const { term, searchRef, handleSearchChange, searchResults } = useSearch();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <>
@@ -51,6 +52,9 @@ export const AppLayout = ({ children, headerLinks, footerLinks }: AppLayoutProps
           },
           searchResult: searchResults,
           searchWrapperRef: searchRef,
+          isSearchOpen,
+          onSearchOpen: () => setIsSearchOpen(true),
+          onSearchClose: () => setIsSearchOpen(false),
           button: {
             title: userName ?? 'Войти',
             onClick: () => {

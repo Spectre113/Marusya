@@ -17,3 +17,21 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 1439px) {
+  .topMovie__title {
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .topMovie__title {
+    position: relative;
+    font-size: 24px;
+    left: 11px;
+  }
+
+  .topMovies > .container {
+    width: 96%;
+  }
+}

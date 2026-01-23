@@ -20,7 +20,9 @@ export const SearchList = ({ movies, isLoading }: SearchListProps) => {
   if (isLoading) {
     return (
       <ul className="flex list-reset search__list">
-        <Spinner />
+        <div className="flex search-spinner">
+          <Spinner />
+        </div>
       </ul>
     );
   }

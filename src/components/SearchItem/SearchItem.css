@@ -16,17 +16,9 @@
   align-items: center;
 }
 
-.search__date {
-  margin-left: 15px;
-}
-
 .search__data {
   color: var(--primary-opacity);
   font-size: 14px;
-}
-
-.search__data:not(:last-child) {
-  margin-right: 20px;
 }
 
 .search__title {
@@ -38,8 +30,48 @@
 .search__main-info {
   align-items: center;
   margin-bottom: 5px;
+  gap: 17px;
 }
 
 .search__poster-block {
   margin-right: 15px;
+}
+
+@media (max-width: 1024px) {
+  .search__item {
+    min-width: 220px;
+    min-height: 320px;
+    height: 320px;
+    flex-direction: column;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .search__item:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .search__poster-block {
+    margin-right: auto;
+    margin-bottom: 12px;
+  }
+
+  .search__main-info {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .search__main-info > :last-child {
+    flex-basis: 100%;
+  }
+
+  .search__poster {
+    width: 158px;
+    max-height: 206px;
+  }
+
+  .search__film-info {
+    width: 95%;
+    margin-right: auto;
+  }
 }

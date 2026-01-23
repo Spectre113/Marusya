@@ -1,5 +1,6 @@
 import { Footer, type FooterProps } from './Footer/Footer';
-import { Header, type HeaderProps } from './Header/Header';
+import { Header } from './Header/Header';
+import { type HeaderProps } from './Header/Header.types';
 
 export interface LayoutProps {
   header: HeaderProps;

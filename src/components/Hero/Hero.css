@@ -60,16 +60,6 @@
   color: var(--error);
 }
 
-.modal__error {
-  font-size: 20px;
-  color: var(--primary);
-}
-
-.video {
-  height: -webkit-fill-available;
-  border: none;
-}
-
 .hero__poster {
   align-items: center;
 }
@@ -78,4 +68,89 @@
   min-height: 200px;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 1439px) {
+  .hero > .container {
+    flex-direction: column-reverse;
+  }
+
+  .hero__poster-img {
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .hero__info {
+    width: 100%;
+    padding-top: 24px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero__description {
+    margin-bottom: 30px;
+  }
+
+  .hero__poster-img {
+    border-radius: 16px;
+  }
+
+  .hero__top-menu {
+    margin-bottom: 14px;
+  }
+
+  .hero__title {
+    margin-bottom: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    margin-bottom: 59px;
+  }
+
+  .hero__title {
+    margin-bottom: 11px;
+    font-size: 24px;
+    line-height: 31px;
+  }
+
+  .hero__description {
+    margin-bottom: 33px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__buttons-section {
+    width: 103%;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .hero__buttons-section > button:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .hero__buttons-section > :first-child {
+    flex-basis: 100%;
+  }
+
+  .hero__buttons-section > :nth-child(2) {
+    flex: 2.4 1 0;
+    min-width: 0;
+  }
+
+  .hero__buttons-section > :nth-child(3),
+  .hero__buttons-section > :nth-child(4) {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero__poster-img {
+    height: 234px;
+  }
 }

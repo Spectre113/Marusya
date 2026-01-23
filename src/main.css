@@ -50,10 +50,16 @@ html {
   overflow-x: hidden;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 body {
@@ -115,4 +121,16 @@ input {
   border: none;
   background: none;
   outline: none;
+}
+
+@media (max-width: 1400px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 89%;
+  }
 }
