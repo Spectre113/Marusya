@@ -71,10 +71,6 @@
 }
 
 @media (max-width: 1439px) {
-  .hero > .container {
-    flex-direction: column-reverse;
-  }
-
   .hero__poster-img {
     height: 100%;
     max-width: 100%;
@@ -83,6 +79,35 @@
   .hero__info {
     width: 100%;
     padding-top: 24px;
+  }
+
+  .hero__title {
+    font-size: 30px;
+  }
+
+  .hero__description {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1160px) {
+  .hero__buttons-section {
+    width: 90%;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .hero__buttons-section > button:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .hero__buttons-section > :first-child {
+    flex-basis: 100%;
+  }
+
+  .hero__buttons-section > :nth-child(2) {
+    flex: 2.4 1 0;
+    min-width: 0;
   }
 }
 
@@ -101,6 +126,29 @@
 
   .hero__title {
     margin-bottom: 11px;
+  }
+
+  .hero > .container {
+    flex-direction: column-reverse;
+  }
+
+  .hero__buttons-section {
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 15px;
+  }
+
+  .hero__buttons-section > button:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .hero__buttons-section > :first-child {
+    flex-basis: auto;
+  }
+
+  .hero__buttons-section > :nth-child(2) {
+    flex: 0 0 200px;
+    min-width: 0;
   }
 }
 
