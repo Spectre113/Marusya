@@ -108,7 +108,7 @@ npm run preview
 
 - Разбить тяжелые чанки через dynamic import/code splitting
 - Вынести тяжелые SVG/data URI в статические ассеты
-- Добавить unit/integration тесты (например, Vitest + Testing Library)
+- Добавить unit/integration тесты (Vitest + Testing Library)
 - Улучшить пользовательские уведомления об ошибках (toast/inline)
 - Добавить CI pipeline (lint + build + test)
 
