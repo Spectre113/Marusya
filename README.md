@@ -18,7 +18,7 @@ Frontend SPA для поиска фильмов, просмотра карточ
 
 ## Технологии
 
-- React 19
+- React
 - TypeScript (strict mode)
 - React Router
 - TanStack React Query
