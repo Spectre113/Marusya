@@ -19,22 +19,24 @@ Frontend SPA для поиска фильмов, просмотра карточ
 ## Технологии
 
 - React
-- TypeScript (strict mode)
+- TypeScript (`strict`)
 - React Router
 - TanStack React Query
 - Zod (валидация входных/выходных данных)
 - Vite
+- Vitest + Testing Library
 - ESLint + Prettier
 - CSS + BEM
 
 ## Архитектурные решения
 
 - Разделение на слои: `api`, `hooks`, `components`, `pages`, `contexts`
-- Вынесенные API-модули для auth/movies/favorites
+- Вынесенные API-модули для `auth`, `movies`, `favorites`
 - Кастомные хуки для поиска, избранного, локального хранилища, device detection
 - Централизованный `QueryClient` с дефолтными стратегиями кэширования
 - `AuthContext` для пользовательского состояния и модальных форм
 - Валидация API-контрактов через Zod для раннего обнаружения невалидных данных
+- Набор unit-тестов для хуков, UI-компонентов и контекста авторизации
 
 ## Структура проекта
 
@@ -74,13 +76,19 @@ npm run dev
 npm run lint
 ```
 
-### 4) Production сборка
+### 4) Запуск тестов
+
+```bash
+npm run test
+```
+
+### 5) Production сборка
 
 ```bash
 npm run build
 ```
 
-### 5) Локальный предпросмотр сборки
+### 6) Локальный предпросмотр сборки
 
 ```bash
 npm run preview
@@ -91,8 +99,24 @@ npm run preview
 - `npm run dev` - запуск Vite dev server
 - `npm run build` - проверка TypeScript + production build
 - `npm run lint` - запуск ESLint
+- `npm run test` - запуск Vitest
 - `npm run preview` - предпросмотр production сборки
-- `npm run deploy` - публикация `dist` через gh-pages
+- `npm run deploy` - публикация `dist` через `gh-pages`
+
+## Тестирование
+
+В проекте есть unit-тесты для ключевой логики:
+
+- кастомные хуки (`useDebounce`, `useDevice`, `useFavorites`, `useLocalStorage`, `useSearch`, `useToggle`, `useMoviesByGenre`)
+- UI-компоненты (`Button`, `Modal`, `SearchList`, `Login`, `RegisterForm`, `MovieCard`, `FavoriteItem`)
+- контекст авторизации (`AuthContext`)
+- утилиты (`ratingColor`)
+
+Для запуска тестов:
+
+```bash
+npm run test
+```
 
 ## API
 
@@ -104,11 +128,13 @@ npm run preview
 
 Запросы выполняются с `credentials: include`, поэтому для части функциональности требуется авторизация.
 
+## Ссылки
+
+- Репозиторий: `https://github.com/Spectre113/Marusya`
+- Деплой: `https://spectre113.github.io/Marusya/`
+
 ## Что можно улучшить
 
-- Разбить тяжелые чанки через dynamic import/code splitting
-- Вынести тяжелые SVG/data URI в статические ассеты
-- Добавить unit/integration тесты (Vitest + Testing Library)
-- Улучшить пользовательские уведомления об ошибках (toast/inline)
-- Добавить CI pipeline (lint + build + test)
-
+- Добавить CI pipeline (`lint + build + test`)
+- Добавить integration/e2e тесты для пользовательских сценариев
+- Улучшить пользовательские уведомления об ошибках (`toast` / inline feedback)
