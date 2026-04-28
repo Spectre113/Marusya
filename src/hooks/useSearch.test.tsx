@@ -1,7 +1,7 @@
 import { act, render, renderHook, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
-import type { MutableRefObject, ReactNode } from 'react';
+import type { ChangeEvent, MutableRefObject, ReactNode } from 'react';
 import { useSearch } from './useSearch';
 import { fetchMoviesList } from '../api/movies/movies';
 
@@ -67,7 +67,7 @@ describe('useSearch', () => {
     act(() => {
       result.current.handleSearchChange({
         target: { value: 'batman' },
-      } as React.ChangeEvent<HTMLInputElement>);
+      } as ChangeEvent<HTMLInputElement>);
     });
 
     expect(result.current.term).toBe('batman');
@@ -123,7 +123,7 @@ describe('useSearch', () => {
     act(() => {
       result.current.handleSearchChange({
         target: { value: 'error' },
-      } as React.ChangeEvent<HTMLInputElement>);
+      } as ChangeEvent<HTMLInputElement>);
     });
 
     await waitFor(() => {
