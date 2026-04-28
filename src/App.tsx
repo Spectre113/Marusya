@@ -1,12 +1,16 @@
+import { lazy, Suspense } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Home } from './pages/Home';
-import { Account } from './pages/Account';
 import { AuthProvider } from './contexts/AuthContext';
 import { useAuth } from './hooks/useAuth';
-import { FilmPage } from './pages/Film';
-import { Genres } from './pages/Genres';
 import { Loader } from './components/Loader/Loader';
-import { MoviesGenre } from './pages/MoviesGenre';
+
+const Account = lazy(() => import('./pages/Account').then((module) => ({ default: module.Account })));
+const FilmPage = lazy(() => import('./pages/Film').then((module) => ({ default: module.FilmPage })));
+const Genres = lazy(() => import('./pages/Genres').then((module) => ({ default: module.Genres })));
+const MoviesGenre = lazy(() =>
+  import('./pages/MoviesGenre').then((module) => ({ default: module.MoviesGenre }))
+);
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { profileQuery } = useAuth();
@@ -24,20 +28,22 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 function AppRoutes() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route
-        path="/account"
-        element={
-          <ProtectedRoute>
-            <Account />
-          </ProtectedRoute>
-        }
-      />
-      <Route path="/movie/:id" element={<FilmPage />} />
-      <Route path="/genres" element={<Genres />} />
-      <Route path="/genres/:genre" element={<MoviesGenre />} />
-    </Routes>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              <Account />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/movie/:id" element={<FilmPage />} />
+        <Route path="/genres" element={<Genres />} />
+        <Route path="/genres/:genre" element={<MoviesGenre />} />
+      </Routes>
+    </Suspense>
   );
 }
 
